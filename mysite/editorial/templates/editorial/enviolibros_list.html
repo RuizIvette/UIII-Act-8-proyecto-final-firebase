@@ -1,0 +1,27 @@
+{% extends 'editorial/base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between mb-3">
+    <h2>Logística de Envíos</h2>
+    <a href="{% url 'envio_create' %}" class="btn btn-success">➕ Registrar Envío</a>
+</div>
+<table class="table table-hover bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr><th>Tracking</th><th>Libro</th><th>Distribuidor</th><th>Fecha Envío</th><th>Estado</th><th>Acciones</th></tr>
+    </thead>
+    <tbody>
+        {% for envio in object_list %}
+        <tr>
+            <td><span class="badge bg-info">{{ envio.numero_seguimiento }}</span></td>
+            <td>{{ envio.libro.titulo }}</td>
+            <td>{{ envio.distribuidor.nombre_distribuidor }}</td>
+            <td>{{ envio.fecha_envio|date:"d/m/Y" }}</td>
+            <td>{{ envio.estado_envio }}</td>
+            <td>
+                <a href="{% url 'envio_update' envio.pk %}" class="btn btn-sm btn-warning">✏️</a>
+                <a href="{% url 'envio_delete' envio.pk %}" class="btn btn-sm btn-danger">🗑️</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'editorial/base.html' %}
+{% block content %}
+<div class="card shadow col-md-8 mx-auto">
+    <div class="card-header bg-success text-white"><h4>Registro de Envío</h4></div>
+    <div class="card-body">
+        <form method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary w-100">Registrar Envío</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

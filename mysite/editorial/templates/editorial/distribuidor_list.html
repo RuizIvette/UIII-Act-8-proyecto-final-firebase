@@ -1,0 +1,26 @@
+{% extends 'editorial/base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between mb-3">
+    <h2>Distribuidores</h2>
+    <a href="{% url 'distribuidor_create' %}" class="btn btn-success">➕ Nuevo</a>
+</div>
+<table class="table table-striped bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr><th>Empresa</th><th>Contacto</th><th>País</th><th>Teléfono</th><th>Acciones</th></tr>
+    </thead>
+    <tbody>
+        {% for dist in object_list %}
+        <tr>
+            <td>{{ dist.nombre_distribuidor }}</td>
+            <td>{{ dist.contacto_principal }}</td>
+            <td>{{ dist.pais_distribucion }}</td>
+            <td>{{ dist.telefono }}</td>
+            <td>
+                <a href="{% url 'distribuidor_update' dist.pk %}" class="btn btn-sm btn-warning">✏️</a>
+                <a href="{% url 'distribuidor_delete' dist.pk %}" class="btn btn-sm btn-danger">🗑️</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

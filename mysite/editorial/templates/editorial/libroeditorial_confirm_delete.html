@@ -1,0 +1,11 @@
+{% extends 'editorial/base.html' %}
+{% block content %}
+<div class="alert alert-danger col-md-6 mx-auto shadow">
+    <h4>¿Eliminar el libro "{{ object.titulo }}"?</h4>
+    <p>Cuidado: Esto podría eliminar también contratos y envíos asociados.</p>
+    <form method="post">{% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, borrar libro</button>
+        <a href="{% url 'libro_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

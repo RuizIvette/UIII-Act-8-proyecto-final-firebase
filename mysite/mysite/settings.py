@@ -25,9 +25,17 @@ SECRET_KEY = 'django-insecure-^=6-_k)oh!n9-fpcd1qd0rf(!8y2!!8cc*so1if(!*ydv@*_dc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-
+# IMPORTANTE: Agrega esto para solucionar el error 403 Forbidden
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.cloudworkstations.dev',  # Esto cubre tu entorno actual de Project IDX
+    'https://*.web.app',                # Para cuando despliegues en Firebase
+    'https://*.firebaseapp.com',        # Para Firebase
+    'https://*.run.app',                # Para Cloud Run
+    'http://127.0.0.1',                 # Localhost
+    'http://localhost',                 # Localhost
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'editorial',
 ]
 
 MIDDLEWARE = [

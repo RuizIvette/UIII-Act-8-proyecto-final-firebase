@@ -1,0 +1,26 @@
+{% extends 'editorial/base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between mb-3">
+    <h2>Contratos</h2>
+    <a href="{% url 'contrato_create' %}" class="btn btn-success">➕ Nuevo Contrato</a>
+</div>
+<table class="table table-striped bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr><th>Libro</th><th>Autor</th><th>Firma</th><th>Regalías %</th><th>Acciones</th></tr>
+    </thead>
+    <tbody>
+        {% for contrato in object_list %}
+        <tr>
+            <td>{{ contrato.libro.titulo }}</td>
+            <td>{{ contrato.autor_principal }}</td>
+            <td>{{ contrato.fecha_firma }}</td>
+            <td>{{ contrato.porcentaje_regalias }}%</td>
+            <td>
+                <a href="{% url 'contrato_update' contrato.pk %}" class="btn btn-sm btn-warning">✏️</a>
+                <a href="{% url 'contrato_delete' contrato.pk %}" class="btn btn-sm btn-danger">🗑️</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

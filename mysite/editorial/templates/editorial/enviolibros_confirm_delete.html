@@ -1,0 +1,10 @@
+{% extends 'editorial/base.html' %}
+{% block content %}
+<div class="alert alert-danger col-md-6 mx-auto">
+    <h4>¿Cancelar registro de envío {{ object.numero_seguimiento }}?</h4>
+    <form method="post">{% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar Registro</button>
+        <a href="{% url 'envio_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

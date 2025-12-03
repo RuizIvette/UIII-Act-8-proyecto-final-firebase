@@ -1,0 +1,40 @@
+{% extends 'editorial/base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between mb-3">
+    <h2>Catálogo de Libros</h2>
+    <a href="{% url 'libro_create' %}" class="btn btn-success">➕ Nuevo Libro</a>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover bg-white shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Género</th>
+                <th>Stock</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for libro in object_list %}
+            <tr>
+                <td class="fw-bold">{{ libro.titulo }}</td>
+                <td>{{ libro.autor_principal }}</td>
+                <td>{{ libro.genero }}</td>
+                <td>{{ libro.stock_almacen }}</td>
+                <td>${{ libro.precio_tapa }}</td>
+                <td>
+                    <span class="badge bg-secondary">{{ libro.estado_publicacion }}</span>
+                </td>
+                <td>
+                    <a href="{% url 'libro_update' libro.pk %}" class="btn btn-sm btn-warning">✏️</a>
+                    <a href="{% url 'libro_delete' libro.pk %}" class="btn btn-sm btn-danger">🗑️</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
