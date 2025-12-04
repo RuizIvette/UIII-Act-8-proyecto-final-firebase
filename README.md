@@ -1,4 +1,2 @@
-# Django
-
-A Django starter template as per the docs: https://docs.djangoproject.com/en/5.0/intro/tutorial01/
-
+# UIII-Act-8-proyecto-final-firebase
+Tablas firebase Editorial

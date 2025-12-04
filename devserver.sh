@@ -1,3 +1,3 @@
 #!/bin/sh
 source .venv/bin/activate
-python mysite/manage.py runserver $PORT
+python backend_Editorial0684/manage.py runserver $PORT
