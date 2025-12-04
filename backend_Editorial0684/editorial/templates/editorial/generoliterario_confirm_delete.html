@@ -1,7 +1,7 @@
 {% extends 'editorial/base.html' %}
 {% block content %}
-<div class="alert alert-danger col-md-6 mx-auto shadow">
-    <h4>¿Eliminar el género {{ object }}?</h4>
+<div class="alert alert-danger col-md-6 mx-auto">
+    <h4>¿Eliminar {{ object }}?</h4>
     <form method="post">{% csrf_token %}
         <button type="submit" class="btn btn-danger">Eliminar</button>
         <a href="{% url 'genero_list' %}" class="btn btn-secondary">Cancelar</a>

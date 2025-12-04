@@ -1,36 +1,46 @@
 {% extends 'editorial/base.html' %}
 {% block content %}
 <div class="d-flex justify-content-between mb-3">
-    <h2>Catálogo de Libros</h2>
-    <a href="{% url 'libro_create' %}" class="btn btn-success">➕ Nuevo Libro</a>
+    <h2>Libros Completos</h2>
+    <a href="{% url 'libro_create' %}" class="btn btn-success">➕ Nuevo</a>
 </div>
 <div class="table-responsive">
-    <table class="table table-bordered table-hover bg-white shadow-sm">
+    <table class="table table-bordered table-striped bg-white table-sm">
         <thead class="table-dark">
             <tr>
+                <th>ID</th>
                 <th>Título</th>
                 <th>Autor</th>
+                <th>ISBN</th>
                 <th>Género</th>
-                <th>Stock</th>
+                <th>Editor</th>
+                <th>Publicación</th>
+                <th>Páginas</th>
                 <th>Precio</th>
+                <th>Stock</th>
                 <th>Estado</th>
+                <th>Formato</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            {% for libro in object_list %}
+            {% for l in object_list %}
             <tr>
-                <td class="fw-bold">{{ libro.titulo }}</td>
-                <td>{{ libro.autor_principal }}</td>
-                <td>{{ libro.genero }}</td>
-                <td>{{ libro.stock_almacen }}</td>
-                <td>${{ libro.precio_tapa }}</td>
+                <td>{{ l.id }}</td>
+                <td>{{ l.titulo }}</td>
+                <td>{{ l.autor_principal }}</td>
+                <td>{{ l.isbn }}</td>
+                <td>{{ l.genero }}</td>
+                <td>{{ l.editor }}</td>
+                <td>{{ l.fecha_publicacion|date:"d/m/Y" }}</td>
+                <td>{{ l.num_paginas }}</td>
+                <td>${{ l.precio_tapa }}</td>
+                <td>{{ l.stock_almacen }}</td>
+                <td>{{ l.estado_publicacion }}</td>
+                <td>{{ l.formato }}</td>
                 <td>
-                    <span class="badge bg-secondary">{{ libro.estado_publicacion }}</span>
-                </td>
-                <td>
-                    <a href="{% url 'libro_update' libro.pk %}" class="btn btn-sm btn-warning">✏️</a>
-                    <a href="{% url 'libro_delete' libro.pk %}" class="btn btn-sm btn-danger">🗑️</a>
+                    <a href="{% url 'libro_update' l.pk %}" class="btn btn-sm btn-warning">✏️</a>
+                    <a href="{% url 'libro_delete' l.pk %}" class="btn btn-sm btn-danger">🗑️</a>
                 </td>
             </tr>
             {% endfor %}

@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Editorial</title>
+    <title>Sistema Editorial Completo</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Ajuste para que las tablas con muchos datos se vean mejor */
+        th { white-space: nowrap; } 
+        td { vertical-align: middle; }
+    </style>
 </head>
 <body class="bg-light">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">📚 Editorial Manager</a>
+        <div class="container-fluid"> <!-- Container fluid para usar todo el ancho -->
+            <a class="navbar-brand" href="{% url 'home' %}">📚 Editorial 0684</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -28,22 +34,17 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid px-4"> <!-- Margenes más amplios -->
         {% block content %}{% endblock %}
     </div>
-    <!-- INICIO DEL FOOTER PERSONALIZADO -->
+
     <footer class="bg-dark text-white text-center py-4 mt-5">
         <div class="container">
             <h5 class="mb-1">Ivette Ruiz Estrada 5I 0684</h5>
             <p class="mb-0 small text-white-50">Proyecto de Base de Datos - Editorial</p>
         </div>
     </footer>
-    <!-- FIN DEL FOOTER -->
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </html>

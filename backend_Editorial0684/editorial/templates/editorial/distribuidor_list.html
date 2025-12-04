@@ -4,23 +4,39 @@
     <h2>Distribuidores</h2>
     <a href="{% url 'distribuidor_create' %}" class="btn btn-success">➕ Nuevo</a>
 </div>
-<table class="table table-striped bg-white shadow-sm">
-    <thead class="table-dark">
-        <tr><th>Empresa</th><th>Contacto</th><th>País</th><th>Teléfono</th><th>Acciones</th></tr>
-    </thead>
-    <tbody>
-        {% for dist in object_list %}
-        <tr>
-            <td>{{ dist.nombre_distribuidor }}</td>
-            <td>{{ dist.contacto_principal }}</td>
-            <td>{{ dist.pais_distribucion }}</td>
-            <td>{{ dist.telefono }}</td>
-            <td>
-                <a href="{% url 'distribuidor_update' dist.pk %}" class="btn btn-sm btn-warning">✏️</a>
-                <a href="{% url 'distribuidor_delete' dist.pk %}" class="btn btn-sm btn-danger">🗑️</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped bg-white">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Distribuidor</th>
+                <th>Contacto</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Dirección</th>
+                <th>País</th>
+                <th>Tipo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in object_list %}
+            <tr>
+                <td>{{ d.id }}</td>
+                <td>{{ d.nombre_distribuidor }}</td>
+                <td>{{ d.contacto_principal }}</td>
+                <td>{{ d.telefono }}</td>
+                <td>{{ d.email }}</td>
+                <td>{{ d.direccion_almacen }}</td>
+                <td>{{ d.pais_distribucion }}</td>
+                <td>{{ d.tipo_distribucion }}</td>
+                <td>
+                    <a href="{% url 'distribuidor_update' d.pk %}" class="btn btn-sm btn-warning">✏️</a>
+                    <a href="{% url 'distribuidor_delete' d.pk %}" class="btn btn-sm btn-danger">🗑️</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

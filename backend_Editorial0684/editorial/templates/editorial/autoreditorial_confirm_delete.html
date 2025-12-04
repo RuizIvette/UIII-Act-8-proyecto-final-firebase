@@ -1,10 +1,9 @@
 {% extends 'editorial/base.html' %}
 {% block content %}
-<div class="alert alert-danger col-md-6 mx-auto shadow">
+<div class="alert alert-danger col-md-6 mx-auto">
     <h4>¿Eliminar a {{ object }}?</h4>
-    <p>Esta acción no se puede deshacer.</p>
     <form method="post">{% csrf_token %}
-        <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
         <a href="{% url 'autor_list' %}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>

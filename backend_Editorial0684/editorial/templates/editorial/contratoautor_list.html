@@ -2,25 +2,43 @@
 {% block content %}
 <div class="d-flex justify-content-between mb-3">
     <h2>Contratos</h2>
-    <a href="{% url 'contrato_create' %}" class="btn btn-success">➕ Nuevo Contrato</a>
+    <a href="{% url 'contrato_create' %}" class="btn btn-success">➕ Nuevo</a>
 </div>
-<table class="table table-striped bg-white shadow-sm">
-    <thead class="table-dark">
-        <tr><th>Libro</th><th>Autor</th><th>Firma</th><th>Regalías %</th><th>Acciones</th></tr>
-    </thead>
-    <tbody>
-        {% for contrato in object_list %}
-        <tr>
-            <td>{{ contrato.libro.titulo }}</td>
-            <td>{{ contrato.autor_principal }}</td>
-            <td>{{ contrato.fecha_firma }}</td>
-            <td>{{ contrato.porcentaje_regalias }}%</td>
-            <td>
-                <a href="{% url 'contrato_update' contrato.pk %}" class="btn btn-sm btn-warning">✏️</a>
-                <a href="{% url 'contrato_delete' contrato.pk %}" class="btn btn-sm btn-danger">🗑️</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped bg-white">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Libro</th>
+                <th>Autor</th>
+                <th>Fecha Firma</th>
+                <th>Fin Contrato</th>
+                <th>Regalías (%)</th>
+                <th>Adelanto ($)</th>
+                <th>ID Agente</th>
+                <th>Cláusulas</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in object_list %}
+            <tr>
+                <td>{{ c.id }}</td>
+                <td>{{ c.libro }}</td>
+                <td>{{ c.autor_principal }}</td>
+                <td>{{ c.fecha_firma|date:"d/m/Y" }}</td>
+                <td>{{ c.fecha_fin_contrato|date:"d/m/Y" }}</td>
+                <td>{{ c.porcentaje_regalias }}%</td>
+                <td>${{ c.monto_adelanto }}</td>
+                <td>{{ c.id_agente_literario }}</td>
+                <td><small>{{ c.clausulas_especiales|truncatechars:50 }}</small></td>
+                <td>
+                    <a href="{% url 'contrato_update' c.pk %}" class="btn btn-sm btn-warning">✏️</a>
+                    <a href="{% url 'contrato_delete' c.pk %}" class="btn btn-sm btn-danger">🗑️</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

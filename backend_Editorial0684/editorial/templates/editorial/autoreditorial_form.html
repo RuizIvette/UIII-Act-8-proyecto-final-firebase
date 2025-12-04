@@ -1,7 +1,7 @@
 {% extends 'editorial/base.html' %}
 {% block content %}
 <div class="card shadow col-md-8 mx-auto">
-    <div class="card-header bg-primary text-white"><h4>Formulario Autor</h4></div>
+    <div class="card-header bg-primary text-white"><h4>Datos del Autor</h4></div>
     <div class="card-body">
         <form method="post">{% csrf_token %}
             {{ form.as_p }}
