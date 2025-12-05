@@ -3,15 +3,18 @@
 
 {% block content %}
 <div class="p-5 mb-4 bg-white rounded-3 shadow-sm text-center">
-    <!-- Si tienes la imagen configurada -->
+    
+    <!-- Imagen de portada -->
     <img src="https://www.ofimaticasz.com/wp-content/uploads/2019/12/revistas-scaled-1000x500.jpg" class="img-fluid rounded mb-4" style="max-height: 400px;">
 
     <h1 class="display-5 fw-bold">Panel de Control Editorial</h1>
     <p class="fs-4">Base de datos completa con vista detallada de todos los campos.</p>
     <p class="fs-4">Selecciona una opción del menú para comenzar a gestionar la base de datos.</p>
+    
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
-        <a href="{% url 'libroeditorial_list' %}" class="btn btn-primary btn-lg px-4 gap-3">Ver Libros</a>
-        <a href="{% url 'autoreditorial_list' %}" class="btn btn-outline-secondary btn-lg px-4">Ver Autores</a>
+        <!-- AQUÍ ESTABA EL ERROR: Usamos 'libro_list' y 'autor_list' -->
+        <a href="{% url 'libro_list' %}" class="btn btn-primary btn-lg px-4 gap-3">Ver Libros</a>
+        <a href="{% url 'autor_list' %}" class="btn btn-outline-secondary btn-lg px-4">Ver Autores</a>
     </div>
 </div>
 {% endblock %}

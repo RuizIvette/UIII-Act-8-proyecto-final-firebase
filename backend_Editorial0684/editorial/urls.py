@@ -13,6 +13,8 @@ from .views import (
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
 
+    # NOTA: Los nombres (name='...') deben coincidir con lo que pones en {% url '...' %}
+
     # Autores
     path('autores/', AutorListView.as_view(), name='autor_list'),
     path('autores/nuevo/', AutorCreateView.as_view(), name='autor_create'),
